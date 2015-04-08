@@ -11,6 +11,8 @@ class DemandeVisite {
 
     static hasMany = [musees:Musee]
 
+    static belongsTo = [Musee]
+
     static constraints = {
     }
 }
