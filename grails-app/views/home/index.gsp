@@ -5,7 +5,7 @@
   Time: 14:30
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="toulousemusee.Adresse" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -90,13 +90,15 @@
 
 <body>
 
-<g:form controller="HomeController" action="recherche">
+<g:form action="recherche">
     <label>Nom du musée: </label>
     <g:textField name="nomMusee"/><br/>
 
 
 
     <label>Code postal: </label>
+    <g:select name="codePostal"
+              from="${Adresse.list().codePostal.unique()}" />
 
 
     <label>Nom de la rue: </label>
@@ -106,6 +108,52 @@
 
     <g:actionSubmit value="Rechercher"/>
 </g:form>
+
+<table>
+    <thead>
+    <tr>
+
+        <th><g:message code="musee.nom.label" default="Nom" /></th>
+
+        <th><g:message code="musee.telephone.label" default="Téléphone" /></th>
+
+        <th><g:message code="musee.adresse.label" default="Adresse" /></th>
+
+        <th><g:message code="musee.accesMetro.label" default="Métro" /></th>
+
+        <th><g:message code="musee.accesBus.label" default="Bus" /></th>
+
+        <th><g:message code="musee.horairesOuverture.label" default="Horaires" /></th>
+
+        <th><g:message code="musee.gestionnaire.label" default="Gestionnaire" /></th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <g:each in="${museeInstanceList}" status="i" var="museeInstance">
+        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+
+            <td>${fieldValue(bean: museeInstance, field: "nom")}</td>
+
+            <td>${fieldValue(bean: museeInstance, field: "telephone")}</td>
+
+            <td>${fieldValue(bean: museeInstance, field: "adresse")}</td>
+
+            <td>${fieldValue(bean: museeInstance, field: "accesMetro")}</td>
+
+            <td>${fieldValue(bean: museeInstance, field: "accesBus")}</td>
+
+            <td>${fieldValue(bean: museeInstance, field: "horairesOuverture")}</td>
+
+            <td>${fieldValue(bean: museeInstance, field: "gestionnaire")}</td>
+        </tr>
+    </g:each>
+    </tbody>
+</table>
+<div class="pagination">
+    <g:paginate total="${museeInstanceCount ?: 0}" />
+</div>
+
 
 
 </body>

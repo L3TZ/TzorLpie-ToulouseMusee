@@ -8,6 +8,6 @@ class HomeController {
 
     def recherche() {
         def museeList = museeService.searchMusees(params.nomMusee, params.codePostal, params.nomRue)
-        render(model:[museeInstanceList: museeList, museeInstanceCount: museeList.size()])
+        render(view:"index",model:[museeInstanceList: museeList, museeInstanceCount: museeList.size()])
     }
 }
