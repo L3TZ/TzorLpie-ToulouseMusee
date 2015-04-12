@@ -14,6 +14,10 @@ class Musee {
 
     static hasMany = [demandevisites:DemandeVisite]
 
+    static mapping = {
+        gestionnaire fetch:'join'
+    }
+
     static constraints = {
         nom blank:false
         horairesOuverture blank:false
