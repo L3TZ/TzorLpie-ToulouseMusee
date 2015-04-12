@@ -17,8 +17,7 @@ class DemandeVisiteController {
         Calendar c2 = GregorianCalendar.getInstance()
         c2.clear()
         c2.set(params.int('dateFinPeriode_year') ?: 0, (params.int('dateFinPeriode_month') ?: 0)-1, params.int('dateFinPeriode_day') ?: 1);
-        //def dateDebutPeriode = new Date(params.int('dateDebutPeriode_year') ?: 0,params.int('dateDebutPeriode_month') ?: 0,params.int('dateDebutPeriode_day') ?: 0 )
-        //def dateFinPeriode = new Date(params.int('dateFinPeriode_year') ?: 0,params.int('dateFinPeriode_month') ?: 0,params.int('dateFinPeriode_day') ?: 0 )
+
         def dateDebutPeriode = c1.getTime()
         def dateFinPeriode = c2.getTime()
 
