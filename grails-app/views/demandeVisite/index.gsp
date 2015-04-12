@@ -132,9 +132,9 @@
     <label>Date de début :</label>
     <g:datePicker name="dateDebutPeriode" value="${new Date()}" precision="day" relativeYears="[0..1]"></g:datePicker><br/>
     <label>Date de fin :</label>
-    <g:datePicker name="dateFinPeriode" value="${new Date()}" precision="day" relativeYears="[0..1]"></g:datePicker><br/>
+    <g:datePicker name="dateFinPeriode" value="${ new Date((new Date()).getTime() + (1000 * 60 * 60 * 24))}" precision="day" relativeYears="[0..1]"></g:datePicker><br/>
     <label>Nombre de personne(s) (6 max.):</label>
-    <g:field type="number" name="nbPersonnes" min="1" max="6" required="true" />
+    <g:field type="number" name="nbPersonnes" min="1" max="6" required="true" value="1"/>
     <g:actionSubmit value="Demander visite" action="creationDemande"/>
 </g:form>
 
