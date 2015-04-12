@@ -101,6 +101,7 @@
 
         #museesPrefs ul {
             list-style: none;
+            margin-bottom: 20px;
         }
 
         #museesPrefs ul li {
@@ -177,6 +178,7 @@
                 <li>${museePref.key} <br/><a class="myButton" href="${createLink(controller: "home",action: "suppMuseePref",params: [id:museePref.value])}">Supprimer</a></li>
             </g:each>
         </ul>
+        <a class="myButton" href="${createLink(controller: "demandeVisite",action: "index")}">Effectuer une demande de visite</a>
     </div>
 
 </g:if>

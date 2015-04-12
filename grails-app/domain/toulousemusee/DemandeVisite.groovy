@@ -14,5 +14,12 @@ class DemandeVisite {
     static belongsTo = Musee
 
     static constraints = {
+        nbPersonnes max: 6, min: 1
+        dateDebutPeriode validator: {val ->
+            val >= new Date()
+        }
+        dateFinPeriode validator: {val, obj ->
+            val >= obj.dateDebutPeriode
+        }
     }
 }
