@@ -90,6 +90,14 @@
 
 <body>
 
+<div id="museesPrefs">
+    <ul>
+        <g:each in="${listeMuseesPrefs}" status="i" var="museePref">
+            <li>${museePref}</li>
+        </g:each>
+    </ul>
+</div>
+
 <g:form action="recherche">
     <label>Nom du musée: </label>
     <g:textField name="nomMusee"/><br/>
@@ -127,6 +135,8 @@
 
         <th><g:message code="musee.gestionnaire.label" default="Gestionnaire" /></th>
 
+        <th></th>
+
     </tr>
     </thead>
     <tbody>
@@ -146,6 +156,8 @@
             <td>${fieldValue(bean: museeInstance, field: "horairesOuverture")}</td>
 
             <td>${fieldValue(bean: museeInstance, field: "gestionnaire")}</td>
+
+            <td><a href="${createLink(controller: "home",action: "ajoutMuseePref",params: [id:fieldValue(bean: museeInstance, field: "id")])}"> Ajoutez à ma liste</a></td>
         </tr>
     </g:each>
     </tbody>
