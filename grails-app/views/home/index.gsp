@@ -85,32 +85,64 @@
             margin-top: 0;
         }
     }
+        #museesPrefs {
+            width: 200px;
+            height: 500px;
+            overflow-y: scroll;
+            position: fixed;
+            top:100px;
+            right: 0px;
+            background-color: white;
+            text-align: center;
+            border:1px solid gray;
+            padding:20px;
+            box-shadow: gray 0 0 2px 2px;
+        }
+
+        #museesPrefs ul {
+            list-style: none;
+        }
+
+        #rechercheForm {
+            width: 400px;
+            padding:20px;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        #rechercheForm input,#rechercheForm select {
+            margin-top:5px;
+        }
     </style>
 </head>
 
 <body>
 
-<div id="museesPrefs">
-    <ul>
-        <g:each in="${listeMuseesPrefs}" status="i" var="museePref">
-            <li>${museePref}</li>
-        </g:each>
-    </ul>
-</div>
+<g:if test="${listeMuseesPrefs.size() > 0}">
 
-<g:form action="recherche">
+    <div id="museesPrefs">
+        <ul>
+            <g:each in="${listeMuseesPrefs}" status="i" var="museePref">
+                <li>${museePref}</li>
+            </g:each>
+        </ul>
+    </div>
+
+</g:if>
+
+<g:form id="rechercheForm" url="[action: 'recherche']">
     <label>Nom du musée: </label>
     <g:textField name="nomMusee"/><br/>
 
 
 
-    <label>Code postal: </label>
-    <g:select name="codePostal"
-              from="${Adresse.list().codePostal.unique()}" />
-
 
     <label>Nom de la rue: </label>
     <g:textField name="nomRue"/><br/>
+
+    <label>Code postal: </label>
+    <g:select name="codePostal"
+              from="${Adresse.list().codePostal.unique()}" />
 
 
 
@@ -157,7 +189,7 @@
 
             <td>${fieldValue(bean: museeInstance, field: "gestionnaire")}</td>
 
-            <td><a href="${createLink(controller: "home",action: "ajoutMuseePref",params: [id:fieldValue(bean: museeInstance, field: "id")])}"> Ajoutez à ma liste</a></td>
+            <td><a href="${createLink(controller: "home",action: "ajoutMuseePref",params: [id:fieldValue(bean: museeInstance, field: "id")])}"> Ajouter à ma liste</a></td>
         </tr>
     </g:each>
     </tbody>
