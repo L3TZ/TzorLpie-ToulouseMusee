@@ -14,6 +14,10 @@ class DemandeVisite {
 
     static belongsTo = Musee
 
+    static mapping = {
+        musees fetch:'join'
+    }
+
     static constraints = {
         nbPersonnes max: 6, min: 1
         dateDebutPeriode validator: {
