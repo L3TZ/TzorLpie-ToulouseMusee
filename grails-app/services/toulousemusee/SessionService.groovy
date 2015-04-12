@@ -11,25 +11,29 @@ class SessionService {
 
     def getListeMuseesPrefs(GrailsHttpSession session) {
         if (session.listeMusee == null) {
-            session.listeMusee = new ArrayList<Integer>()
+            session.listeMusee = new TreeMap<String,Integer>()
         }
         session.listeMusee
     }
 
     def ajoutMuseePref(GrailsHttpSession session, int id) {
-        if (Musee.findById(id) != null) {
+        def museeInstance = Musee.findById(id)
+        if (museeInstance != null) {
             def liste = session.listeMusee
-            if (!liste.contains(new Integer(id))) {
-                liste.add(new Integer(id))
+            if (!liste.containsValue(new Integer(id))) {
+                liste.put(museeInstance.nom,new Integer(id))
                 session.listeMusee = liste
             }
         }
     }
 
     def suppMuseePref(GrailsHttpSession session, int id) {
-        def liste = session.listeMusee
-        liste.remove(new Integer(id))
-        session.listeMusee = liste
+        def museeInstance = Musee.findById(id)
+        if (museeInstance != null) {
+            def liste = session.listeMusee
+            liste.remove(museeInstance.nom)
+            session.listeMusee = liste
+        }
     }
 
 }
