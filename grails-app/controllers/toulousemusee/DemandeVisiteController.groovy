@@ -12,8 +12,10 @@ class DemandeVisiteController {
 
     def creationDemande() {
         Calendar c1 = GregorianCalendar.getInstance()
+        c1.clear()
         c1.set(params.int('dateDebutPeriode_year') ?: 0, (params.int('dateDebutPeriode_month') ?: 0)-1, params.int('dateDebutPeriode_day') ?: 1);
         Calendar c2 = GregorianCalendar.getInstance()
+        c2.clear()
         c2.set(params.int('dateFinPeriode_year') ?: 0, (params.int('dateFinPeriode_month') ?: 0)-1, params.int('dateFinPeriode_day') ?: 1);
         //def dateDebutPeriode = new Date(params.int('dateDebutPeriode_year') ?: 0,params.int('dateDebutPeriode_month') ?: 0,params.int('dateDebutPeriode_day') ?: 0 )
         //def dateFinPeriode = new Date(params.int('dateFinPeriode_year') ?: 0,params.int('dateFinPeriode_month') ?: 0,params.int('dateFinPeriode_day') ?: 0 )
@@ -32,10 +34,10 @@ class DemandeVisiteController {
             }
 
             retourCreation = demandeVisiteService.createDemande(listeMuseeInstance,dateDebutPeriode,dateFinPeriode,nbPersonnes)
-            if (retourCreation) {
-                [retourCreation: retourCreation]
+            if (!retourCreation.hasErrors()) {
+                [retourCreation: retourCreation.code]
             } else {
-                redirect(action: 'index')
+                render(view: 'index',model:[retourCreation: retourCreation,listeMuseesPrefs: listeMuseesPrefs])
             }
         }
     }

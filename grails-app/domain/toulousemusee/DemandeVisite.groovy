@@ -1,6 +1,5 @@
 package toulousemusee
 
-import java.text.SimpleDateFormat
 
 class DemandeVisite {
 
@@ -18,11 +17,17 @@ class DemandeVisite {
     static constraints = {
         nbPersonnes max: 6, min: 1
         dateDebutPeriode validator: {
-            SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd")
-            return fmt.format(it).equals(fmt.format(new Date()))
+            Calendar c1 = GregorianCalendar.getInstance()
+            c1.set(Calendar.HOUR_OF_DAY, 0);
+            c1.set(Calendar.MINUTE, 0);
+            c1.set(Calendar.SECOND, 0);
+            c1.set(Calendar.MILLISECOND, 0);
+            if (!(it >= c1.getTime()))
+                return 'demandeVisite.validation.dateDebutPeriode'
         }
         dateFinPeriode validator: {val, obj ->
-            val > obj.dateDebutPeriode
+            if (!val.after(obj.dateDebutPeriode))
+                return 'demandeVisite.validation.dateFinPeriode'
         }
     }
 }

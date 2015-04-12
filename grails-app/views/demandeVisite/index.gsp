@@ -5,7 +5,7 @@
   Time: 18:41
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="toulousemusee.DemandeVisite" contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -103,17 +103,37 @@
         #demandeForm input,#demandeForm select {
             margin-top:5px;
         }
+
+        #demandeForm input[type="number"] {
+            width:35px;
+        }
+
+        .erreurBloc {
+            width:80%;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 20px;
+            border:2px solid red;
+            padding:20px;
+            color:red;
+        }
     </style>
 </head>
 
 <body>
+
+<g:hasErrors bean="${retourCreation}">
+    <div class="erreurBloc">
+        <g:renderErrors bean="${retourCreation}" as="list"  />
+    </div>
+</g:hasErrors>
 
 <g:form id="demandeForm" url="[action: 'creationDemande']" >
     <label>Date de début :</label>
     <g:datePicker name="dateDebutPeriode" value="${new Date()}" precision="day" relativeYears="[0..1]"></g:datePicker><br/>
     <label>Date de fin :</label>
     <g:datePicker name="dateFinPeriode" value="${new Date()}" precision="day" relativeYears="[0..1]"></g:datePicker><br/>
-    <label>Nombre de personne(s) :</label>
+    <label>Nombre de personne(s) (6 max.):</label>
     <g:field type="number" name="nbPersonnes" min="1" max="6" required="true" />
     <g:actionSubmit value="Demander visite" action="creationDemande"/>
 </g:form>

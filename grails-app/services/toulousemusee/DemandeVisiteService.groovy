@@ -12,7 +12,8 @@ class DemandeVisiteService {
                 dateDemande: new Date(),
                 statut: 'En cours de traitement',
                 musees: listeMusees,
-                code: UUID.randomUUID().toString()).save()
-        demandeInstance?.code
+                code: UUID.randomUUID().toString())
+        def demandeInstanceSave = demandeInstance.save()
+        demandeInstanceSave ?: demandeInstance
     }
 }
