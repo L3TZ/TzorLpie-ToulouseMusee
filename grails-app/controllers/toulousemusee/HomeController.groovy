@@ -25,6 +25,15 @@ class HomeController {
         if (params.id != null) {
             sessionService.ajoutMuseePref(session,params.int('id'))
         }
-        render(view : 'index', model:[listeMuseesPrefs: listeMuseesPrefs])
+        redirect(action: 'index')
+    }
+
+    def suppMuseePref() {
+        def listeMuseesPrefs = sessionService.getListeMuseesPrefs(session)
+
+        if (params.id != null) {
+            sessionService.suppMuseePref(session, params.int('id'))
+        }
+        redirect(action: 'index')
     }
 }

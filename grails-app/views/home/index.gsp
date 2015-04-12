@@ -108,6 +108,10 @@
             padding-bottom: 10px;
         }
 
+        #museesPrefs ul li a {
+            margin-top:7px;
+        }
+
         #rechercheForm {
             width: 400px;
             padding:20px;
@@ -170,7 +174,7 @@
         <h4>Mes musées préférés</h4><br/>
         <ul>
             <g:each in="${listeMuseesPrefs}" status="i" var="museePref">
-                <li>${museePref.key}</li>
+                <li>${museePref.key} <br/><a class="myButton" href="${createLink(controller: "home",action: "suppMuseePref",params: [id:museePref.value])}">Supprimer</a></li>
             </g:each>
         </ul>
     </div>
