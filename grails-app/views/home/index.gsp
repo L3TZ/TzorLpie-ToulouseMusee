@@ -106,7 +106,7 @@
 
 
 
-    <g:actionSubmit value="Rechercher"/>
+    <g:actionSubmit value="Rechercher" action="recherche"/>
 </g:form>
 
 <table>
@@ -151,7 +151,7 @@
     </tbody>
 </table>
 <div class="pagination">
-    <g:paginate total="${museeInstanceCount ?: 0}" />
+    <g:paginate total="${museeInstanceCount ?: 0}"  controller="home" action="recherche"  params="${params}"/>
 </div>
 
 

@@ -5,9 +5,9 @@ import grails.transaction.Transactional
 @Transactional
 class MuseeService {
 
-    List<Musee> searchMusees(String nomPart, String cP, String ruePart) {
+    def searchMusees(String nomPart, String cP, String ruePart,int maxP, int offsetP) {
         def criteria = Musee.createCriteria()
-        List<Musee> res = criteria.list {
+        def res = criteria.list (max: maxP, offset: offsetP){
             if (nomPart) {
                 like 'nom', "%${nomPart}%"
             }

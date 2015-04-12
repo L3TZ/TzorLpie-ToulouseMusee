@@ -9,4 +9,8 @@ class Gestionnaire {
     static constraints = {
         nom blank:false
     }
+
+    String toString() {
+        return nom;
+    }
 }

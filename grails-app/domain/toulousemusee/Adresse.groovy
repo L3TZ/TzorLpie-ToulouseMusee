@@ -14,4 +14,8 @@ class Adresse {
         codePostal blank:false
         ville blank:false
     }
+
+    String toString() {
+        return (numero ?: '') +' '+rue+' '+codePostal+' '+ville;
+    }
 }
