@@ -92,6 +92,9 @@ img {
 #grailsLogo a {
 	display: inline-block;
 	margin: 1em;
+	color:white;
+	font-size: 1.5em;
+	text-decoration: none;
 }
 
 .content {
