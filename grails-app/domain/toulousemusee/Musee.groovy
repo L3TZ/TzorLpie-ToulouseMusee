@@ -16,6 +16,7 @@ class Musee {
 
     static mapping = {
         gestionnaire fetch:'join'
+        demandevisites fetch: 'join'
     }
 
     static constraints = {
