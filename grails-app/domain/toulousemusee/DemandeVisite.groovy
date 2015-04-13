@@ -19,6 +19,7 @@ class DemandeVisite {
     }
 
     static constraints = {
+        statut inList: ['En cours de traitement','Confirmée','Refusée']
         nbPersonnes max: 6, min: 1
         dateDebutPeriode validator: {
             Calendar c1 = GregorianCalendar.getInstance()
