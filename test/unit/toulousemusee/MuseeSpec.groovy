@@ -26,4 +26,25 @@ class MuseeSpec extends Specification {
         "un nom"    |   "un horaire d'ouverture"    |   "un téléphone"      |   null                |   null            |   Mock(Gestionnaire)  |   Mock(Adresse)
 
     }
+
+    @Unroll
+    void "test l'invalidite d'un musée non valide"(String unNom, String unHoraireOuverture, String unTelephone, Gestionnaire unGestionnaire, Adresse uneAdresse) {
+
+        given: "une activite initialise avec un nom vide ou un horaire d'ouverture vide ou un téléphone vide ou sans gestionnaire ou sans adresse"
+        Musee musee = new Musee()
+
+        expect: "l'activite est invalide"
+        musee.validate() == false
+
+        where:
+
+        unNom       |   unHoraireOuverture          |   unTelephone     |   unGestionnaire      |   uneAdresse
+        ""          |   "un horaire d'ouverture"    |   "un téléphone"  |   Mock(Gestionnaire)  |   Mock(Adresse)
+        "un nom"    |   ""                          |   "un téléphone"  |   Mock(Gestionnaire)  |   Mock(Adresse)
+        "un nom"    |   "un horaire d'ouverture"    |   ""              |   Mock(Gestionnaire)  |   Mock(Adresse)
+        "un nom"    |   "un horaire d'ouverture"    |   "un téléphone"  |   null                |   Mock(Adresse)
+        "un nom"    |   "un horaire d'ouverture"    |   "un téléphone"  |   Mock(Gestionnaire)  |   null
+
+
+    }
 }
