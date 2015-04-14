@@ -19,6 +19,7 @@ class DemandeVisite {
     }
 
     static constraints = {
+        code blank: false
         statut inList: ['En cours de traitement','Confirmée','Refusée']
         nbPersonnes max: 6, min: 1
         dateDebutPeriode validator: {
@@ -31,7 +32,7 @@ class DemandeVisite {
                 return 'demandeVisite.validation.dateDebutPeriode'
         }
         dateFinPeriode validator: {val, obj ->
-            if (!val.after(obj.dateDebutPeriode))
+            if (!val?.after(obj.dateDebutPeriode ?: val))
                 return 'demandeVisite.validation.dateFinPeriode'
         }
     }
