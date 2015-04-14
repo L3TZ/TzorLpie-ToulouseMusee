@@ -19,6 +19,9 @@ class MuseeSpec extends Specification {
         expect: "le musée est valide"
         musee.validate() == true
 
+        and: "il n'a pas de demande de visite"
+        !musee.demandevisites
+
         where:
         unNom       |   unHoraireOuverture          |   unTelephone         |   unAccesMetro        |   unAccesBus      |   unGestionnaire      |   uneAdresse
         "un nom"    |   "un horaire d'ouverture"    |   "un téléphone"      |   "un accès métro"    |   "un accès bus"  |   Mock(Gestionnaire)  |   Mock(Adresse)
