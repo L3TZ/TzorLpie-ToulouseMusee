@@ -36,7 +36,7 @@ class DemandeVisiteController {
             if (!retourCreation.hasErrors()) {
                 [retourCreation: retourCreation.code]
             } else {
-                render(view: 'index',model:[retourCreation: retourCreation,listeMuseesPrefs: listeMuseesPrefs])
+               render(view: 'index',model:[retourCreation: retourCreation,listeMuseesPrefs: listeMuseesPrefs])
             }
         }
     }
