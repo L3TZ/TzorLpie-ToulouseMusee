@@ -10,8 +10,9 @@ class MuseeControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
-        // TODO: Populate valid properties like...
-        //params["name"] = 'someValidName'
+        params["nom"] = "Nom musée"
+        params["horairesOuverture"]= "Horaires d'ouverture"
+        params["telephone"]= "0555555555"
     }
 
     void "Test the index action returns the correct model"() {
