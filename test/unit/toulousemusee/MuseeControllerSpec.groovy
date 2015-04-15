@@ -13,6 +13,8 @@ class MuseeControllerSpec extends Specification {
         params["nom"] = "Nom musée"
         params["horairesOuverture"]= "Horaires d'ouverture"
         params["telephone"]= "0555555555"
+        params["gestionnaire"]= Mock(Gestionnaire)
+        params["adresse"]= Mock(Adresse)
     }
 
     void "Test the index action returns the correct model"() {
