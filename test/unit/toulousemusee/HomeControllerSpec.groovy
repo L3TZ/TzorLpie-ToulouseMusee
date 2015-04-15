@@ -9,12 +9,19 @@ import spock.lang.Specification
 @TestFor(HomeController)
 class HomeControllerSpec extends Specification {
 
-    def setup() {
+    void "Test the index action returns the correct model"() {
+
+        given:
+        def serviceMock = mockFor(SessionService)
+        serviceMock.demand.getListeMuseesPrefs {return new TreeMap<String,Integer>()}
+        controller.sessionService = serviceMock.createMock()
+
+        when: "The index action is executed"
+        def model = controller.index()
+
+        then: "The model is correct"
+        model.listeMuseesPrefs != null
     }
 
-    def cleanup() {
-    }
 
-    void "test something"() {
-    }
 }
