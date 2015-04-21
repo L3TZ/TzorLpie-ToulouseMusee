@@ -17,7 +17,9 @@
 		<g:layoutHead/>
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="${createLink(controller:"home",action: "index")}">Toulouse Musées</a></div>
+		<div id="grailsLogo" role="banner"><a href="${createLink(controller:"home",action: "index")}">Toulouse Musées</a>
+			<div id="suiviDemandes"><a href="${createLink(controller:"suiviDemandes",action: "index")}">Suivre mes demandes de visite</a></div>
+		</div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

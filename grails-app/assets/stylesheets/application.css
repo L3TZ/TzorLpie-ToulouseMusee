@@ -11,3 +11,13 @@
 *= require mobile
 *= require_self
 */
+
+#suiviDemandes a {
+    font-size: 1.0em;
+    text-decoration: underline;
+}
+
+#suiviDemandes {
+    display: inline-block;
+    margin-left: 40%;
+}
